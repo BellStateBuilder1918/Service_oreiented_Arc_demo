@@ -1,0 +1,12 @@
+{
+  "info": {"name": "SOA Order Processing", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "item": [
+    {"name": "Get customer 101", "request": {"method": "GET", "url": "http://localhost:5001/customers/101"}},
+    {"name": "Get customer 999 (404)", "request": {"method": "GET", "url": "http://localhost:5001/customers/999"}},
+    {"name": "Get product 1", "request": {"method": "GET", "url": "http://localhost:5002/products/1"}},
+    {"name": "Place valid order", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "http://localhost:5003/orders", "body": {"mode": "raw", "raw": "{\"customer_id\": 101, \"product_id\": 1, \"quantity\": 2}"}}},
+    {"name": "Unknown customer", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "http://localhost:5003/orders", "body": {"mode": "raw", "raw": "{\"customer_id\": 999, \"product_id\": 1, \"quantity\": 1}"}}},
+    {"name": "Excessive quantity", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "http://localhost:5003/orders", "body": {"mode": "raw", "raw": "{\"customer_id\": 101, \"product_id\": 1, \"quantity\": 500}"}}},
+    {"name": "Get order ORD-1001", "request": {"method": "GET", "url": "http://localhost:5003/orders/ORD-1001"}}
+  ]
+}
